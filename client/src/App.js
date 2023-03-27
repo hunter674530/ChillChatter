@@ -1,19 +1,20 @@
-import { useState, useEffect } from "react";
+import React from "react";
+import { useState } from "react";
+import "./App.css";
+import Login from "./Login";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [user, setUser] = useState({});
 
-  useEffect(() => {
-    fetch("/hello")
-      .then((r) => r.json())
-      .then((data) => setCount(data.count));
-  }, []);
+  function changeUser(newUser) {
+    setUser(newUser);
+    console.log(user);
+  }
 
   return (
     <div className="App">
-      <h1>Page Count: {count}</h1>
+      <Login changeUser={changeUser} />
     </div>
   );
 }
-
 export default App;

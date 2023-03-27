@@ -1,8 +1,9 @@
+require 'byebug'
 class UsersController < ApplicationController
 skip_before_action :authorize, only: :create
 
 def create
-    # byebug
+    
     user = User.create!(user_params)
     session[:user_id] = user.id
 
@@ -10,6 +11,7 @@ def create
 end
 
 def show
+    
     render json: @current_user 
     #show me who the current user is 
 end

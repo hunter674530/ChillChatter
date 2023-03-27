@@ -1,3 +1,4 @@
+require 'byebug'
 class ApplicationController < ActionController::API
   include ActionController::Cookies
   
@@ -8,8 +9,10 @@ class ApplicationController < ActionController::API
   private
 
   def authorize
-    @current_user = User.find_by(id: session[:user_id])
 
+    @current_user = User.find_by(id: 1)
+    #@current_user = User.find_by(id: session[:user_id])
+    #byebug
     render json: { errors: ["Not authorized"] }, status: :unauthorized unless @current_user
   end
 
