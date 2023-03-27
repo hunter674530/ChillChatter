@@ -22,10 +22,10 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<NavBar />}>
-          <Route index element={<Home />} />
-          <Route path="login" element={<Login changeUser={changeUser} />} />
+          <Route index element={<Login changeUser={changeUser} />} />
+          <Route path="home" element={<Home />} />
           <Route path="chats" element={<Chats />} />
-          <Route path="notes" element={<Notes />} />
+          <Route path="notes" element={<Notes user={user} />} />
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>

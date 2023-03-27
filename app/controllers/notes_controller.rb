@@ -1,8 +1,8 @@
 class NotesController < ApplicationController
   
 def index
-    note = Note.all
-    render json: note, status: :ok
+    notes = Note.all
+    render json: notes, status: :ok
 end
 def show
     note = Note.find(params[:id])
