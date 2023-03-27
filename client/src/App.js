@@ -2,7 +2,6 @@ import React from "react";
 import { useState } from "react";
 import "./App.css";
 import Login from "./Login";
-import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NavBar from "./NavBar";
 import Home from "./Home";
@@ -22,7 +21,10 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<NavBar />}>
-          <Route index element={<Login changeUser={changeUser} />} />
+          <Route
+            index
+            element={<Login changeUser={changeUser} user={user} />}
+          />
           <Route path="home" element={<Home />} />
           <Route path="chats" element={<Chats />} />
           <Route path="notes" element={<Notes user={user} />} />

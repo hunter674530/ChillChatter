@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import "./App.css";
 
-function Login({ changeUser }) {
+function Login({ changeUser, user }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
@@ -29,6 +29,13 @@ function Login({ changeUser }) {
       }
     });
   }
+
+  function logOut() {
+    fetch(`/logout`, {
+      method: "DELETE",
+    }).then(changeUser({}));
+  }
+
   return (
     <div className="App">
       <form onSubmit={handleSubmit}>
@@ -55,6 +62,7 @@ function Login({ changeUser }) {
           <h1>{err}</h1>
         ))}
       </form>
+      <button onClick={logOut}>Logout</button>
     </div>
   );
 }
