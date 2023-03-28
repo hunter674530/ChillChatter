@@ -1,8 +1,7 @@
 import React from "react";
-import { useState } from "react";
-import "./App.css";
+import { useState, useEffect } from "react";
 
-function Login({ changeUser, user, changeClicked }) {
+const SignUp = ({ changeClicked }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
@@ -12,7 +11,7 @@ function Login({ changeUser, user, changeClicked }) {
     e.preventDefault();
     console.log(username, password);
     setIsLoading(true);
-    fetch("/login", {
+    fetch("/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -21,18 +20,15 @@ function Login({ changeUser, user, changeClicked }) {
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
-        r.json().then((newUser) => {
-          changeUser(newUser);
-        });
+        /*nav to login*/
       } else {
         r.json().then((err) => setErrors(err.errors));
       }
     });
   }
-
   return (
     <div className="App">
-      <h1>Login</h1>
+      <h1>SignUp</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="username">Username</label>
         <input
@@ -51,14 +47,15 @@ function Login({ changeUser, user, changeClicked }) {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button variant="fill" color="primary" type="submit">
-          {isLoading ? "Loading..." : "Login"}
+          {isLoading ? "Loading..." : "Create Account"}
         </button>
         {errors.map((err) => (
           <h1>{err}</h1>
         ))}
       </form>
-      <button onClick={changeClicked}>Signup</button>
+      <button onClick={changeClicked}>Login</button>
     </div>
   );
-}
-export default Login;
+};
+
+export default SignUp;

@@ -8,13 +8,24 @@ import Home from "./Home";
 import Chats from "./Chats";
 import Notes from "./Notes";
 import NoPage from "./NoPage";
+import SignUp from "./SignUp";
 
 function App() {
   const [user, setUser] = useState({});
+  const [clicked, setClicked] = useState(false);
 
+  function changeClicked() {
+    setClicked(!clicked);
+  }
   function changeUser(newUser) {
     setUser(newUser);
     console.log(user);
+  }
+
+  function logOut() {
+    fetch(`/logout`, {
+      method: "DELETE",
+    }).then(changeUser({}));
   }
 
   return (
@@ -23,7 +34,15 @@ function App() {
         <Route path="/" element={<NavBar />}>
           <Route
             index
-            element={<Login changeUser={changeUser} user={user} />}
+            element={
+              user.id ? (
+                <button onClick={logOut}>Logout</button>
+              ) : clicked ? (
+                <SignUp changeClicked={changeClicked} />
+              ) : (
+                <Login changeUser={changeUser} changeClicked={changeClicked} />
+              )
+            }
           />
           <Route path="home" element={<Home />} />
           <Route path="chats" element={<Chats />} />
