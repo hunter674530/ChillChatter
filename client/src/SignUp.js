@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const SignUp = ({ changeClicked }) => {
   const [username, setUsername] = useState("");
@@ -20,7 +20,7 @@ const SignUp = ({ changeClicked }) => {
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
-        /*nav to login*/
+        changeClicked();
       } else {
         r.json().then((err) => setErrors(err.errors));
       }
