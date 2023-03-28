@@ -44,8 +44,8 @@ function App() {
               )
             }
           />
-          <Route path="home" element={<Home />} />
-          <Route path="chats" element={<Chats />} />
+          <Route path="home" element={<Home user={user} />} />
+          <Route path="chats" element={<Chats user={user} />} />
           <Route path="notes" element={<Notes user={user} />} />
           <Route path="*" element={<NoPage />} />
         </Route>
