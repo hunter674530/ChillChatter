@@ -6,7 +6,7 @@ class MessagesController < ApplicationController
 end
 def show
     message = Message.find(params[:id])
-    render json: message, status: :ok
+    render json: message,include: :user, status: :ok
 end
 def create
     message = Message.create!(message_params)
