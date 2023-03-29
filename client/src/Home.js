@@ -9,7 +9,7 @@ const Home = ({ user }) => {
   return (
     <Container fluid>
       <Row>
-        <Col>
+        <Col xs={6}>
           <Chats user={user} />
         </Col>
         <Col>
