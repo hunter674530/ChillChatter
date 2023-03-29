@@ -44,6 +44,7 @@ const Chats = ({ user }) => {
       }
     });
   }
+
   return (
     <div>
       <h1>Chats</h1>
