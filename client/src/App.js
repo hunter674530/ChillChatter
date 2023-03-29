@@ -9,6 +9,7 @@ import Chats from "./Chats";
 import Notes from "./Notes";
 import NoPage from "./NoPage";
 import SignUp from "./SignUp";
+import Button from "react-bootstrap/Button";
 
 function App() {
   const [user, setUser] = useState({});
@@ -36,7 +37,9 @@ function App() {
             index
             element={
               user.id ? (
-                <button onClick={logOut}>Logout</button>
+                <Button variant="danger" onClick={logOut}>
+                  Logout
+                </Button>
               ) : clicked ? (
                 <SignUp changeClicked={changeClicked} />
               ) : (
