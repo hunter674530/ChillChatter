@@ -2,6 +2,11 @@ import React from "react";
 import { useState, useEffect } from "react";
 import Chat from "./Chat";
 import Message from "./Message";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+import "./App.css";
 
 const Chats = ({ user }) => {
   const [formErrors, setFormErrors] = useState([]);
@@ -46,18 +51,30 @@ const Chats = ({ user }) => {
   }
 
   return (
-    <div>
-      <h1>Chats</h1>
-      {chats.map((chat) => (
-        <Chat chat={chat} displayMessages={displayMessages} />
-      ))}
-      {currentChat.id
-        ? messages.map((message) => <Message message={message} user={user} />)
-        : null}
+    <Container className="bottom">
+      <h2 className="leftBasic">Chats</h2>
+      <Row>
+        {chats.map((chat) => (
+          <Col>
+            <Chat chat={chat} displayMessages={displayMessages} />
+          </Col>
+        ))}
+      </Row>
+      {currentChat.id ? (
+        <div>
+          <h3 className="leftBasic">{currentChat.name}</h3>
+          <div className="messageSpace">
+            {messages.map((message) => (
+              <Message message={message} user={user} />
+            ))}
+          </div>
+        </div>
+      ) : null}
       {currentChat.id ? (
         <form onSubmit={handleSubmit}>
           <label htmlFor="newMessage"></label>
           <input
+            className="Disappear"
             type="string"
             value={newMessage}
             onChange={(e) => setNewMessage(e.target.value)}
@@ -70,10 +87,10 @@ const Chats = ({ user }) => {
                 </p>
               ))
             : null}
-          <button type="submit">Send</button>
+          <Button type="submit">Send</Button>
         </form>
       ) : null}
-    </div>
+    </Container>
   );
 };
 

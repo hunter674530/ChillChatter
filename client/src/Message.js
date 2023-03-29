@@ -13,9 +13,9 @@ function Message({ message, user }) {
   return (
     <div>
       {message.user_id === user.id ? (
-        <p>{message.content}</p>
+        <p className="left">{message.content}</p>
       ) : (
-        <p style={{ color: "red" }}>
+        <p className="right">
           {message.content}- {username}
         </p>
       )}

@@ -1,5 +1,8 @@
 import React from "react";
 import { useState } from "react";
+import Button from "react-bootstrap/Button";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
+import "./App.css";
 
 function Note({ note, removeNote, user, changeNote }) {
   const [content, setContent] = useState(note.content);
@@ -35,17 +38,22 @@ function Note({ note, removeNote, user, changeNote }) {
     });
   }
   return (
-    <div>
+    <div className="Space">
       <form onSubmit={handleSubmit}>
         <label htmlFor="content"></label>
         <input
+          className="Blend"
           type="string"
           value={content}
           onChange={(e) => setContent(e.target.value)}
         />
-        <button type="submit">Confirm</button>
+        <ButtonGroup>
+          <Button type="submit">Confirm</Button>
+          <Button variant="danger" onClick={handleDelete}>
+            Delete
+          </Button>
+        </ButtonGroup>
       </form>
-      <button onClick={handleDelete}>Delete</button>
     </div>
   );
 }

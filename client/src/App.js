@@ -30,30 +30,40 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={user.id ? <NavBar /> : null}>
-          <Route
-            index
-            element={
-              user.id ? (
-                <Button variant="danger" onClick={logOut}>
-                  Logout
-                </Button>
-              ) : clicked ? (
-                <SignUp changeClicked={changeClicked} />
-              ) : (
-                <Login changeUser={changeUser} changeClicked={changeClicked} />
-              )
-            }
-          />
-          <Route path="home" element={<Home user={user} />} />
-          <Route path="chats" element={<Chats user={user} />} />
-          <Route path="notes" element={<Notes user={user} />} />
-          <Route path="*" element={<NoPage />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <div className="App">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={user.id ? <NavBar /> : null}>
+            <Route
+              index
+              element={
+                user.id ? (
+                  <Button
+                    size="lg"
+                    className="LogOutButton"
+                    variant="danger"
+                    onClick={logOut}
+                  >
+                    Logout
+                  </Button>
+                ) : clicked ? (
+                  <SignUp changeClicked={changeClicked} />
+                ) : (
+                  <Login
+                    changeUser={changeUser}
+                    changeClicked={changeClicked}
+                  />
+                )
+              }
+            />
+            <Route path="home" element={<Home user={user} />} />
+            <Route path="chats" element={<Chats user={user} />} />
+            <Route path="notes" element={<Notes user={user} />} />
+            <Route path="*" element={<NoPage />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 export default App;

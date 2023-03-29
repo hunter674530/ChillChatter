@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "react-bootstrap/Button";
 
 function Chat({ chat, displayMessages }) {
   function showMessages() {
@@ -8,7 +9,9 @@ function Chat({ chat, displayMessages }) {
 
   return (
     <div>
-      <button onClick={showMessages}>{chat.name}</button>
+      <Button variant="info" onClick={showMessages}>
+        {chat.name}
+      </Button>
     </div>
   );
 }

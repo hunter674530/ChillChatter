@@ -2,6 +2,9 @@ import React from "react";
 import { useState, useEffect } from "react";
 import Note from "./Note";
 
+import Button from "react-bootstrap/Button";
+import "./App.css";
+
 const Notes = ({ user }) => {
   const [formErrors, setFormErrors] = useState([]);
   const [notes, setNotes] = useState([]);
@@ -46,8 +49,8 @@ const Notes = ({ user }) => {
   }
   console.log(notes);
   return (
-    <div>
-      <h1>Notes</h1>
+    <div className="bottom">
+      <h1 className="leftBasic">Notes</h1>
       {notes.map((note) => (
         <Note
           key={note.id}
@@ -60,6 +63,7 @@ const Notes = ({ user }) => {
       <form onSubmit={handleSubmit}>
         <label htmlFor="newNote">New:</label>
         <input
+          className="Disappear"
           type="string"
           value={newNote}
           onChange={(e) => setNewNote(e.target.value)}
@@ -72,7 +76,7 @@ const Notes = ({ user }) => {
               </p>
             ))
           : null}
-        <button type="submit">Add Note</button>
+        <Button type="submit">Add Note</Button>
       </form>
     </div>
   );

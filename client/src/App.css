@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: aqua;
 }
 
 .App-logo {
@@ -35,4 +36,64 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.Space {
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.SignUpButton {
+  margin-top: 7%;
+  margin-bottom: 10%;
+}
+
+.TextBox {
+  width: 50%;
+  margin-left: 25%;
+}
+
+.title {
+  margin-bottom: 2%;
+}
+
+.LogOutButton {
+  margin-top: 25%;
+  margin-bottom: 25%;
+}
+
+.leftBasic {
+  text-align: left;
+}
+
+.left {
+  text-align: left;
+  margin-left: 2%;
+  margin-right: 25%;
+}
+
+.right {
+  text-align: right;
+  margin-right: 2%;
+  margin-left: 25%;
+}
+
+.bottom {
+  margin-bottom: 50%;
+}
+
+.Disappear {
+  margin-right: 3%;
+  opacity: 0.5;
+}
+
+.messageSpace {
+  background-color: rgb(4, 219, 252);
+}
+
+.Blend {
+  background-color: aqua;
+  border-color: aqua;
+  width: 70%;
+  margin-right: 2%;
 }
